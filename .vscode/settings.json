@@ -1,0 +1,7 @@
+{
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "jsx"
+  },
+  "tailwindCSS.suggestions": true,
+  "tailwindCSS.showPixelEquivalents": true
+}
