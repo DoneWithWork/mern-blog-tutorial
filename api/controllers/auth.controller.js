@@ -30,7 +30,7 @@ export const signup = asyncHandler(async (req, res, next) => {
   }
   res.status(201).json({ message: "User created" });
 });
-export const login = async (req, res) => {
+export const login = async (req, res, next) => {
   const { username, password } = req.body;
   if (!username || !password || username === "" || password === "") {
     next(errorHandler(400, "Please fill all fields"));
@@ -42,7 +42,7 @@ export const login = async (req, res) => {
       return next(errorHandler(404, "user not found"));
     }
 
-    const validPassword = bcrypt.compare(password, validUser.password);
+    const validPassword = await bcrypt.compare(password, validUser.password);
 
     if (!validPassword) {
       return next(errorHandler(404, "Invalid credentials"));
